@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.2.0"
+    "@babel/preset-env": "^7.2.0",
+    "gh-pages": "^2.0.1"
   }
 }
