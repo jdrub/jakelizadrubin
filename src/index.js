@@ -1,45 +1,65 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from 'styled-components';
+import zonked from './zonked_100-speed.gif';
 
-class HelloMessage extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            count: 10
-        };
-    }
-
-    handleClick() {
-        const { count } = this.state;
-
-        this.setState({
-            count: count + 1
-        });
-    }
-
+class App extends React.Component {
     render() {
-        const { count } = this.state;
-
         return (
             <BorderedContainer>
-                <h1>Hello {this.props.name}</h1>
-                <button onClick={() => this.handleClick()}>count!</button>
-                <h2>Count: {count}</h2>
+                <StyledImg src={zonked} />
+                <span>
+                    <NamePartJake>Jake</NamePartJake>
+                    <NamePartLiza>Liza</NamePartLiza>
+                    <NamePartDrubin>Drubin</NamePartDrubin>
+                </span>
             </BorderedContainer>
         );
     }
 }
 
+const NamePart = styled.h1`
+    display: inline-block;
+`;
+
+const NamePartJake = styled(NamePart)`
+    color: #794848;
+`;
+
+const NamePartLiza = styled(NamePart)`
+    color: #e91e63;
+`;
+const NamePartDrubin = styled(NamePart)`
+    color: #ffc107;
+`;
+
+const StyledImg = styled.img`
+`;
+
 const BorderedContainer = styled.div`
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100%;
+    width: 100%;
     border-width: 1px;
     border-style: solid;
     border-color: coral;
-    border-radius: 3px;
+    border-radius: 60px;
     padding: 5px;
+
+    background-image: url(${zonked});
+    background-repeat: repeat;
+    background-size: 90px;
+    background-color: steelblue;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
 `;
 
-let App = document.getElementById("app");
+let el = document.getElementById("app");
 
-ReactDOM.render(<HelloMessage name="World" />, App);
+ReactDOM.render(<App />, el);
