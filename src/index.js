@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import drubin from './drubin.gif';
 import liza from './liza.gif';
 import jake from './jake.gif';
 import tile from './bg_tile.gif';
+import RadioQuestion from './RadioQuestion';
 
 const isMobile = () => window.innerWidth < 768;
 
@@ -70,12 +71,39 @@ class App extends React.Component {
         const { isMobile } = this.state;
 
         return (
-            <BorderedContainer isMobile={isMobile}>
-                {this.renderHeadsAndNames()}
-            </BorderedContainer>
+            <>
+                <GlobalStyle />
+                <BorderedContainer isMobile={isMobile}>
+                    {this.renderHeadsAndNames()}
+                    <InputContainer>
+                        <QuestionContainer>
+                            <RadioQuestion
+                                question="Did you absolutely love the ZVA's?"
+                                name="love"
+                                answers={['Yes', 'No']}
+                            />
+                        </QuestionContainer>
+                    </InputContainer>
+                </BorderedContainer>
+            </>
         );
     }
 }
+
+const QuestionContainer = styled.div`
+`;
+
+const InputContainer = styled.div`
+    width: 400px;
+    height: 400px;
+
+    margin: 0 auto;
+    padding: 10px;
+
+    background-color: white;
+
+    border-radius: 5px;
+`;
 
 const MobileHeadNameRow = styled.div`
     width: 100%;
@@ -136,8 +164,6 @@ const NamePartDrubin = styled(NamePart)`
 `;
 
 const BorderedContainer = styled.div`
-    box-sizing: border-box;
-
     ${p => p.isMobile
         ? ''
         : `
@@ -147,8 +173,8 @@ const BorderedContainer = styled.div`
         `
     }
 
-    height: 100%;
     width: 100%;
+
     border-width: 1px;
     border-style: solid;
     border-color: coral;
@@ -163,6 +189,12 @@ const BorderedContainer = styled.div`
     font-family: 'Roboto', sans-serif;
     font-size: ${p => p.isMobile ? '27px' : '35px'};
 `;
+
+const GlobalStyle = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+    }
+`
 
 let el = document.getElementById("app");
 
