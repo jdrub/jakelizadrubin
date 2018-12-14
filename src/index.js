@@ -239,7 +239,8 @@ const BorderedContainer = styled.div`
         `
     }
 
-    width: 100%;
+    width: calc(100%-20px);
+    margin: 10px;
 
     border-width: 1px;
     border-style: solid;
