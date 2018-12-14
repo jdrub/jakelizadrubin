@@ -160,7 +160,7 @@ const StyledRadioQuestion = styled(RadioQuestion)`
 const InputContainer = styled.div`
     transform: rotateZ(-2deg);
 
-    width: 400px;
+    width: 350px;
 
     margin: 0px auto;
     margin-bottom: 10px;
@@ -239,7 +239,7 @@ const BorderedContainer = styled.div`
         `
     }
 
-    width: calc(100%-20px);
+    width: 100%;
     margin: 10px;
 
     border-width: 1px;
@@ -260,6 +260,10 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+        padding: 10px;
     }
 `
 
