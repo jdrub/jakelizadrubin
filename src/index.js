@@ -29,6 +29,18 @@ class App extends React.Component {
         this.setState({ isMobile: isMobile() });
     }
 
+    handleSubmit() {
+        const hasSubmit = JSON.parse(localStorage.getItem('hasSubmit'));
+        if (hasSubmit) {
+            alert('Sorry, we have already recorded your response. Only one response is allowed per person.');
+        } else {
+            localStorage.setItem('hasSubmit', JSON.stringify(true));
+
+            alert('Thank you. Your responses along with your user id have been recorded.');
+            location.reload();
+        }
+    }
+
     renderHeadsAndNames() {
         const { isMobile } = this.state;
 
@@ -78,25 +90,25 @@ class App extends React.Component {
                     <InputContainer>
                         <StyledRadioQuestion
                             question="Did you absolutely love the ZVA's?"
-                            name="love"
-                            answers={['Yes', 'No']}
+                            name="zva"
+                            answers={['Yes']}
                         />
                         <StyledRadioQuestion
                             question="Did you absolutely love the Hosts?"
-                            name="love"
-                            answers={['Yes', 'No']}
+                            name="host"
+                            answers={['Yes']}
                         />
                         <StyledRadioQuestion
                             question="Did you absolutely love the Production?"
-                            name="love"
-                            answers={['Yes', 'No']}
+                            name="production"
+                            answers={['Yes']}
                         />
                         <TextAreaHeader>
                             Do you have any other comments?
                         </TextAreaHeader>
                         <StyledTextArea type="textarea"/>
                         <SubmitButtonContainer>
-                            <SubmitButton>Submit</SubmitButton>
+                            <SubmitButton onClick={this.handleSubmit}>Submit</SubmitButton>
                         </SubmitButtonContainer>
                     </InputContainer>
                 </BorderedContainer>
@@ -146,6 +158,8 @@ const StyledRadioQuestion = styled(RadioQuestion)`
 `;
 
 const InputContainer = styled.div`
+    transform: rotateZ(-2deg);
+
     width: 400px;
 
     margin: 0px auto;
