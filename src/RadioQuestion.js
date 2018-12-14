@@ -5,8 +5,9 @@ export default ({
     question,
     name,
     answers,
+    className,
 }) => (
-    <>
+    <div className={className}>
         <RadioQuestion>
             {question}
         </RadioQuestion>
@@ -25,11 +26,10 @@ export default ({
                 </RadioAnswer>
             ))
         }
-    </>
+    </div>
 );
 
 const RadioQuestion = styled.div`
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
 `;
 
@@ -38,7 +38,6 @@ const RadioAnswer = styled.div`
 `;
 
 const RadioLabel = styled.label`
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
 `;
 

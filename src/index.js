@@ -76,13 +76,28 @@ class App extends React.Component {
                 <BorderedContainer isMobile={isMobile}>
                     {this.renderHeadsAndNames()}
                     <InputContainer>
-                        <QuestionContainer>
-                            <RadioQuestion
-                                question="Did you absolutely love the ZVA's?"
-                                name="love"
-                                answers={['Yes', 'No']}
-                            />
-                        </QuestionContainer>
+                        <StyledRadioQuestion
+                            question="Did you absolutely love the ZVA's?"
+                            name="love"
+                            answers={['Yes', 'No']}
+                        />
+                        <StyledRadioQuestion
+                            question="Did you absolutely love the Hosts?"
+                            name="love"
+                            answers={['Yes', 'No']}
+                        />
+                        <StyledRadioQuestion
+                            question="Did you absolutely love the Production?"
+                            name="love"
+                            answers={['Yes', 'No']}
+                        />
+                        <TextAreaHeader>
+                            Do you have any other comments?
+                        </TextAreaHeader>
+                        <StyledTextArea type="textarea"/>
+                        <SubmitButtonContainer>
+                            <SubmitButton>Submit</SubmitButton>
+                        </SubmitButtonContainer>
                     </InputContainer>
                 </BorderedContainer>
             </>
@@ -90,15 +105,52 @@ class App extends React.Component {
     }
 }
 
-const QuestionContainer = styled.div`
+const SubmitButtonContainer = styled.div`
+    width: 100%;
+`;
+
+const SubmitButton = styled.button`
+    display: block;
+
+    height: 40px;
+    width: 200px;
+
+    margin: 15px auto;
+
+    font-size: 20px;
+    background-color: steelblue;
+    color: white;
+
+    border-radius: 50px;
+`;
+
+const TextAreaHeader = styled.div`
+    width: 100%;
+    font-size: 20px;
+    margin-top: 20px;
+`
+
+const StyledTextArea = styled.textarea`
+    width: 100%;
+    height: 100px;
+    resize: none;
+
+    font-size: 15px;
+`;
+
+const StyledRadioQuestion = styled(RadioQuestion)`
+    margin-top: 20px;
+    &:first-of-type {
+        margin-top: 0px;
+    }
 `;
 
 const InputContainer = styled.div`
     width: 400px;
-    height: 400px;
 
-    margin: 0 auto;
-    padding: 10px;
+    margin: 0px auto;
+    margin-bottom: 10px;
+    padding: 20px;
 
     background-color: white;
 
@@ -178,7 +230,7 @@ const BorderedContainer = styled.div`
     border-width: 1px;
     border-style: solid;
     border-color: coral;
-    border-radius: 60px;
+    border-radius: 10px;
     padding: 5px;
 
     background-image: url(${tile});
@@ -186,13 +238,13 @@ const BorderedContainer = styled.div`
     background-size: 165px;
     background-color: steelblue;
 
-    font-family: 'Roboto', sans-serif;
     font-size: ${p => p.isMobile ? '27px' : '35px'};
 `;
 
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
     }
 `
 
